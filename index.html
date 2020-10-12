@@ -1,0 +1,65 @@
+<html>
+
+<script>
+
+
+    function computerPlay(){
+        // Random Number Selection
+        // Limit it to be from 0-2
+        // Select Rock / Paper / Scissor based on the selection
+        let ranNum = Math.floor(Math.random() * 3);
+        switch(ranNum){
+            case 0: return "Rock";
+            case 1: return "Paper";
+            case 2: return "Scissor";
+        }
+    };
+
+    function playRound(playerSelection, computerSelection) {
+    // your code here!
+    // Compare 2 values 
+    // Select a method where you can say one is greater than the other   P>R<S>P
+    // compare for all 9 situations
+    // return who wins or loses
+        let playerLength = playerSelection.length;
+        let computerLength = computerSelection.length;
+        let tieMsg = `It's tie! Both picked ${computerSelection}`;
+        let result = (playerLength == 4 && computerLength == 4)? `${tieMsg}` :
+        (playerLength == 4 && computerLength == 5) ? `You lose! Paper beats rock.`:
+        (playerLength == 4 && computerLength == 7) ? `You win! Rock beats scissor`: 
+        (playerLength == 5 && computerLength == 5) ? `${tieMsg}`: 
+        (playerLength == 5 && computerLength == 7) ? `You lose! Scissor beats paper`: 
+        (playerLength == 5 && computerLength == 4) ? `You win! Paper beats rock`: 
+        (playerLength == 7 && computerLength == 7) ? `${tieMsg}`: 
+        (playerLength == 7 && computerLength == 5) ? `You win! Scissor beats paper`: `You lose! Rock beats scissor`;
+        console.log(`Player: ${playerSelection} and Computer: ${computerSelection}`)
+        return result;
+    };
+
+    function game(){
+        // play a game 
+        // record the result
+        // play it 5 times 
+        let playerScore;
+        let computerScore;
+        for(let gameCount = 0; gameCount < 5; gameCount++){
+            let playerSelection = prompt();
+            let computerSelection = computerPlay();
+            let round = playRound(playerSelection, computerSelection);
+            if(round.includes(`win`)){
+                playerScore++;
+            } else if(round.includes(`lose`)){
+                computerScore++;
+            }
+            console.log(round);
+        }
+    };
+
+    game();
+
+
+
+</script>
+
+
+</html>
